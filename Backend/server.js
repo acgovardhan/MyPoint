@@ -43,3 +43,22 @@ const submissionSchema = new mongoose.Schema({
 
 const Submission = mongoose.model('Submission', submissionSchema);
 const User = mongoose.model('User', userSchema);
+
+app.get("/home/viewSubmissions/:username", async (req, res) => {
+  try {
+    const username = req.params.username;
+
+    const user = await User.findOne({ username });
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    const userBatch = user.batch;
+    const submissions = await Submission.find({ batch: userBatch, studentId: username });
+
+    res.status(200).json(submissions);
+  } catch (err) {
+    console.error("Error fetching submissions:", err);
+    res.status(500).json({ message: "Server error", error: err.message });
+  }
+});
