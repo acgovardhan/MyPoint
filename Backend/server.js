@@ -74,3 +74,17 @@ app.get("/logout", (req, res) => {
     return res.status(200).json({ message: "Logged out successfully" });
   });
 });
+
+app.get('/getuserdata/:user', (req, res) => {
+  const username = req.params.user;
+
+  User.findOne({ username }) // findOne for a single user
+    .then((user) => {
+      if (!user) return res.status(404).json({ message: "User not found" });
+      res.json(user); // send user data
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).json({ message: "Server error", error: err.message });
+    });
+});
