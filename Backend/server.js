@@ -88,3 +88,8 @@ app.get('/getuserdata/:user', (req, res) => {
       res.status(500).json({ message: "Server error", error: err.message });
     });
 });
+
+//server listening
+app.listen(3000, ()=>{
+  console.log("listening at http://localhost:3000")
+})
