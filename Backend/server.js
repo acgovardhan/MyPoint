@@ -62,3 +62,15 @@ app.get("/home/viewSubmissions/:username", async (req, res) => {
     res.status(500).json({ message: "Server error", error: err.message });
   }
 });
+
+app.get("/logout", (req, res) => {
+  req.session.destroy((err) => {
+    if (err) {
+      console.error("Error destroying session:", err);
+      return res.status(500).json({ message: "Error logging out" });
+    }
+
+    res.clearCookie("connect.sid"); // clear session cookie
+    return res.status(200).json({ message: "Logged out successfully" });
+  });
+});
