@@ -89,6 +89,42 @@ app.get('/getuserdata/:user', (req, res) => {
     });
 });
 
+//activity submission by post
+app.post("/activity_sub", async (req, res) => {
+  try {
+    const { title, desc, sem, category, point, proof, username, batch } = req.body;
+
+    if (!username || !batch) {
+      return res.status(400).json({ message: "User info missing. Please log in again." });
+    }
+
+    const user = await User.findOne({ username });
+    if (!user) {
+      return res.status(404).json({ message: "User not found. Please log in again." });
+    }
+
+    const currSub = new Submission({
+      title,
+      desc,
+      sem,
+      category,
+      point,
+      proof,
+      status: "pending",
+      batch,
+      studentId: username,
+    });
+
+    await currSub.save();
+
+    console.log("Submission saved successfully!");
+    res.status(201).json({ message: "Activity submitted successfully!" });
+  } catch (err) {
+    console.error("Error saving submission:", err);
+    res.status(500).json({ message: "Server error while saving submission", error: err.message });
+  }
+});
+
 //server listening
 app.listen(3000, ()=>{
   console.log("listening at http://localhost:3000")
