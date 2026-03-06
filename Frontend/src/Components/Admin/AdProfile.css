@@ -1,0 +1,115 @@
+/* Overall Page */
+.admin-profile-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  color: #f8fafc;
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+/* Header */
+.admin-profile-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.admin-profile-header h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #38bdf8;
+}
+
+.admin-profile-header p {
+  font-size: 1rem;
+  color: #cbd5e1;
+  margin-top: 8px;
+}
+
+/* Profile Card Container */
+.admin-profile-container {
+  background: #1e293b;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  padding: 30px;
+  width: 100%;
+  max-width: 700px;
+}
+
+/* Sections */
+.admin-info-section {
+  margin-bottom: 30px;
+}
+
+.admin-info-section h3 {
+  font-size: 1.3rem;
+  color: #facc15;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #334155;
+  padding-bottom: 6px;
+}
+
+/* Info Grid */
+.admin-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+}
+
+.admin-info-item {
+  background: #334155;
+  padding: 15px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-info-item label {
+  font-size: 0.9rem;
+  color: #a1a1aa;
+  margin-bottom: 5px;
+}
+
+.admin-info-item span {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #e2e8f0;
+}
+
+.admin-info-item.full-width {
+  grid-column: 1 / -1;
+}
+
+/* Buttons */
+.admin-profile-buttons {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.admin-btn {
+  background: #38bdf8;
+  color: #0f172a;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.admin-btn:hover {
+  background: #facc15;
+  color: #1e293b;
+}
+
+/* Loading & Error */
+.admin-loading,
+.admin-error {
+  text-align: center;
+  color: #e2e8f0;
+  font-size: 1.1rem;
+  margin-top: 50px;
+}
