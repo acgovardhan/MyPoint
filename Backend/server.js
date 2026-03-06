@@ -58,7 +58,9 @@ const submissionSchema = new mongoose.Schema({
 const Submission = mongoose.model('Submission', submissionSchema);
 const User       = mongoose.model('User', userSchema);
 
-
+app.get("/", (req, res) => {
+  res.status(200).json({ status: "ok", message: "MyPoint API is running" });
+});
 // ─── Auth Routes ─────────────────────────────────────────────────────────────
 
 // Registration
